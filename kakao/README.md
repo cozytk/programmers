@@ -1,12 +1,35 @@
-# Task 
+# Lv1. 숫자 문자열과 영단어 
 ex) 'one2three4' -> '1234'
 
-# Solution: replace함수를 활용하자
+### 나의 코드
+```python
+def solution(s):
+    eng_words = ['zero','one','two','three','four','five','six','seven','eight','nine']
+    en_dict = {i:j for i,j in zip(eng_words, range(10))}
+    i = 0
+    answer = 0
+    while i < len(s):
+        tmp = ''
+        if s[i].isalpha():
+            while i < len(s) and s[i].isalpha() and tmp not in en_dict.keys():
+                tmp = tmp + s[i]
+                i += 1
+            answer = answer * 10 + en_dict[tmp]
+        else:
+            answer = answer * 10 + int(s[i])
+            i += 1
+    return s
+```
+### 개선: replace함수를 활용
 
-`answer = answer.replace(key, value)`
+```python
+for key, val in en_dict.items():
+    answer = answer.replace(key, value)
+    return int(answer)
+```
 
 
-# Task
+# Lv1. 신규아이디 추천
 
 ### 나의 코드
 ```python
