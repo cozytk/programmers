@@ -7,7 +7,6 @@
 # 1. P가 있을때마다 유클리드 거리를 체크해봄
  
 def bfs(p, i, j, start, m):
-    print(p,i,j,start,m)
     if (i < 0 or i > 4 or j < 0 or j > 4 or
         p[i][j] == 'X' or
         abs(start[0] - i) + abs(start[1] - j) > 2 or
