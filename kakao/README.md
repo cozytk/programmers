@@ -89,3 +89,11 @@ for key, val in en_dict.items():
     while len(new_id) < 3:
         new_id += new_id[-1]
 ```
+
+---
+
+# Lv2. 거리두기 확인하기
+
+## 걸린 시간 : 80분
+
+## 개선하기
