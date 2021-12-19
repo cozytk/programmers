@@ -219,3 +219,57 @@ def dfs(p, i, j, start, m):
 ```
 
 - 재귀 말고 스택으로 푸는 것도 다음번에 시도해보자
+
+
+# Lv1. 크레딧 인형뽑기 게임 (24분)
+### 후기
+- 새로운 리스트를 재정렬하여 만들었지만, 인풋이 크다면 만들지 않고 인덱스 위치만으로 코드를 짜는 게 더 좋을 것 같다
+
+### 리스트 컴프리핸션 사용하기
+- 코드 단순화
+```python
+    result = [[0 for _ in range(b_len)] for _ in range(b_len)]
+    for i in range(b_len):
+        for j in range(b_len):
+            result[j][i] = board[i][j]
+```
+
+### 개선
+```python
+# 범위 기반
+[[board[j][i] for _ in range(10)] for _ in range(10)]
+```
+
+# lv.1 키패드 누르기 (24분)
+### 후기
+- 개인적으로 만족하는 풀이이다. 거리를 계산하는 아이디어를 잘 생각한 것 같다
+    - `abs(a, b) % 3 + abs(a, b) // 3`
+
+### 나의 코드
+```python
+def check(n, last_L, last_R, hand):
+    L_dist = abs(n - last_L) // 3 + abs(n - last_L) % 3
+    R_dist = abs(n - last_R) // 3 + abs(n - last_R) % 3
+    if L_dist == R_dist:
+        return 'L' if hand == 'left' else 'R'
+    return 'L' if L_dist < R_dist else 'R'
+
+def solution(numbers, hand):
+    answer = ''
+    last_L = 10
+    last_R = 12
+    for i, n in enumerate(numbers):
+        if n == 0:
+            n = 11
+        if n in [1, 4, 7]:
+            answer += 'L'
+        elif n in [3, 6, 9]:
+            answer += 'R'
+        else:
+            answer += check(n, last_L, last_R, hand)
+        if answer[-1] == 'L':
+            last_L = n
+        else:
+            last_R = n
+    return answer
+```
